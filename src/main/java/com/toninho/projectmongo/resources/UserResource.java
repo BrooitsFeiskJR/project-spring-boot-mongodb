@@ -1,9 +1,9 @@
 package com.toninho.projectmongo.resources;
 
+import com.toninho.projectmongo.domain.Post;
 import com.toninho.projectmongo.domain.User;
 import com.toninho.projectmongo.dto.UserDTO;
 import com.toninho.projectmongo.services.UserService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,5 +50,11 @@ public class UserResource {
         obj.setId(id);
         obj = userService.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = userService.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 }
