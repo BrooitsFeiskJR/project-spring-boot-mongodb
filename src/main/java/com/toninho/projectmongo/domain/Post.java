@@ -15,8 +15,9 @@ public class Post implements Serializable {
     private Date date;
     private String title;
     private String body;
-
     private AuthorDTO author;
+
+
 
     public Post() {
 
@@ -69,6 +70,8 @@ public class Post implements Serializable {
     public void setAuthor(AuthorDTO author) {
         this.author = author;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
